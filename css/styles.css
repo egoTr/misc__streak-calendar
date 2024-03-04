@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+:root {
+  --color-1st: #FF0050;
+  --color-2nd: #00F2EA;
+}
+
+* {
+  font-family: 'Nunito', sans-serif;
+}
+
+html,
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-table {
+  margin-top: 20px;
+  padding: 50px;
+  border: solid 5px var(--color-1st);
+  border-radius: 15px;
+  color: #999;
+}
+
+.calendar-table th {
+  text-transform: uppercase;
+  color: var(--color-2nd);
+}
+
+.calendar-table td {
+  text-align: center;
+  padding: 5px;
+}
+
+.calendar-table td {
+  width: 30px;
+  height: 30px;
+}
+
+.calendar-table td.passed {
+  background-color: var(--color-1st);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.calendar-table td.today {
+  text-decoration: underline;
+}
