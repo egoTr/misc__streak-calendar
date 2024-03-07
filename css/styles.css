@@ -2,6 +2,8 @@
 
 :root {
   --color-1st: #FF0050;
+  --color-1st-rgb: 255, 0, 80;
+  --color-1st-lighter-50: #FF4A75;
   --color-2nd: #00F2EA;
   --day-width: 30px;
   --day-height: 30px;
@@ -30,11 +32,15 @@ html,
 .calendar-table th {
   text-transform: uppercase;
   color: var(--color-2nd);
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 1.0rem;
 }
 
 .calendar-table td {
   text-align: center;
   padding: var(--day-padding);
+  font-size: 0.9rem;
 }
 
 .calendar-table td {
@@ -44,14 +50,16 @@ html,
 }
 
 .calendar-table td.passed {
-  background-color: var(--color-1st);
+  background-color: var(--color-1st-lighter-50);
   color: #fff;
-  font-weight: bold;
   border-radius: 50%;
 }
 
 .calendar-table td.today {
+  color: #fff;
+  font-weight: bold;
   text-decoration: underline;
+  background-color: var(--color-1st);
 }
 
 .calendar-table td.continuous::after {
@@ -64,6 +72,6 @@ html,
   padding: var(--day-padding);
   width: calc(var(--day-width) + 10px);
   height: var(--day-height);
-  background-color: var(--color-1st);
+  background-color: var(--color-1st-lighter-50);
   border-radius: 5px;
 }
