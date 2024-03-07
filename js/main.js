@@ -1,3 +1,8 @@
+/**
+ * Show Streak calendar for the specified year and month
+ * A week starts on Sunday and ends on Saturday
+ */
+
 const btn = document.getElementById('btn');
 const yearInput = document.getElementById('year');
 const monthInput = document.getElementById('month');
@@ -55,18 +60,22 @@ function generateCalendar() {
 
   // Create the table rows for the days of the month
   let dayInMonth = 1;
-  for (let i = 0; i < 6; i++) {
+  let dayPrev = 1;
+
+  // Maximum of 6 weeks
+  for (let week = 0; week < 6; week++) {
     const row = document.createElement('tr');
 
-    for (let j = 0; j < 7; j++) {
+    for (let weekDay = 0; weekDay < 7; weekDay++) {
       const cell = document.createElement('td');
 
+      const isToday = dayInMonth === todayDate && month === todayMonth && year === todayYear;
       // Apply styles to the specific days of the month
-      if (dayInMonth === todayDate && month === todayMonth && year === todayYear)
+      if (isToday)
         cell.classList.add('today');
 
       // Add the day number to the cell
-      if (i === 0 && j < firstDayOfWeek) {
+      if (week === 0 && weekDay < firstDayOfWeek) {
         cell.textContent = '';
       } else if (dayInMonth > daysInMonth) {
         break;
@@ -76,7 +85,23 @@ function generateCalendar() {
         if (+dayInMonth > 0 && +dayInMonth <= todayDate)
           cell.classList.add('passed');
 
-        cell.textContent = dayInMonth;
+        // Continuous days
+        // todo
+        if (
+          dayInMonth > 1 &&       // not 1st
+          weekDay >= 1 &&         // Mon-Sat
+          dayInMonth <= todayDate // Before or today
+        )
+          cell.classList.add('continuous');
+
+        // todo
+        cell.textContent = 
+          dayInMonth <= daysInMonth && dayInMonth >= todayDate ?
+          dayInMonth : 
+          '✔';
+
+        dayPrev = dayInMonth;
+
         dayInMonth++;
       }
 
