@@ -3,6 +3,9 @@
  * A week starts on Sunday and ends on Saturday
  */
 
+// todo: editable
+const CONST_STREAKED_SYMBOL = '🗣️'; // ✔🐉
+
 const btn = document.getElementById('btn');
 const yearInput = document.getElementById('year');
 const monthInput = document.getElementById('month');
@@ -98,7 +101,7 @@ function generateCalendar() {
         cell.textContent = 
           dayInMonth <= daysInMonth && dayInMonth >= todayDate ?
           dayInMonth : 
-          '✔';
+          CONST_STREAKED_SYMBOL;
 
         dayPrev = dayInMonth;
 
