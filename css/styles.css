@@ -45,6 +45,10 @@ html,
   background-color: var(--color-2nd);
 }
 
+#other_months p.this {
+  background-color: var(--color-1st);
+}
+
 #other_months p.next {
   background-color: var(--color-dark-light-2);
 }

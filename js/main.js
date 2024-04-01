@@ -6,8 +6,9 @@
 // todo: editable
 const CONST__STREAKED_SYMBOL = '✔'; // 🗣️✔🐉
 
-// todo
-const CONST_other_months = [
+//#region Other months ---------------------------------------------------------- START 
+// todo: past months
+const CONST_PAST_MONTHS = [
   { year: 2024, month: 3, display: 'MAR', days_in_month: 31, days_streaked: 31 }
 ].forEach(month => {
   const el = document.createElement('p');
@@ -17,6 +18,13 @@ const CONST_other_months = [
   other_months.appendChild(el);
 });
 
+// todo: this month w/ progress
+const el = document.createElement('p');
+el.classList.add('this');
+el.textContent = 1;
+other_months.appendChild(el);
+
+// todo: next months
 const CONST_NEXT_MONTHS = [
   { year: 2024, month: 5, display: 'MAY', days_in_month: 31 },
   { year: 2024, month: 6, display: 'JUN', days_in_month: 30 },
@@ -28,6 +36,7 @@ const CONST_NEXT_MONTHS = [
 
   other_months.appendChild(el);
 });
+//#endregion Other months ------------------------------------------------------- END 
 
 const btn = document.getElementById('btn');
 const yearInput = document.getElementById('year');
