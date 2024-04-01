@@ -4,7 +4,30 @@
  */
 
 // todo: editable
-const CONST_STREAKED_SYMBOL = '🗣️'; // ✔🐉
+const CONST__STREAKED_SYMBOL = '✔'; // 🗣️✔🐉
+
+// todo
+const CONST_other_months = [
+  { year: 2024, month: 3, display: 'MAR', days_in_month: 31, days_streaked: 31 }
+].forEach(month => {
+  const el = document.createElement('p');
+  el.classList.add('past');
+  el.textContent = month.display;
+
+  other_months.appendChild(el);
+});
+
+const CONST_NEXT_MONTHS = [
+  { year: 2024, month: 5, display: 'MAY', days_in_month: 31 },
+  { year: 2024, month: 6, display: 'JUN', days_in_month: 30 },
+  { year: 2024, month: 7, display: 'JUL', days_in_month: 31 },
+].forEach(month => {
+  const el = document.createElement('p');
+  el.classList.add('next');
+  el.textContent = month.display;
+
+  other_months.appendChild(el);
+});
 
 const btn = document.getElementById('btn');
 const yearInput = document.getElementById('year');
@@ -28,12 +51,6 @@ function generateCalendar() {
   const year = parseInt(yearInput.value);
   const month = parseInt(monthInput.value);
 
-  // Get the container element for the calendar
-  const calendarContainer = document.getElementById('calendar');
-
-  // Clear the calendar container
-  calendarContainer.innerHTML = '';
-
   // Create a new Date object for the specified year and month
   const date = new Date(year, month - 1, 1);
 
@@ -43,9 +60,8 @@ function generateCalendar() {
   // Get the day of the week for the first day of the month (0 - Sunday, 1 - Monday, etc.)
   const firstDayOfWeek = date.getDay();
 
-  // Create the table element for the calendar
-  const table = document.createElement('table');
-  table.classList.add('calendar-table');
+  const table = document.querySelector('table');
+  table.innerHTML = '';
 
   // Create the table header row
   const headerRow = document.createElement('tr');
@@ -71,14 +87,16 @@ function generateCalendar() {
 
     for (let weekDay = 0; weekDay < 7; weekDay++) {
       const cell = document.createElement('td');
+      // todo
+      const validDay = weekDay >= firstDayOfWeek;
 
       const isToday = dayInMonth === todayDate && month === todayMonth && year === todayYear;
       // Apply styles to the specific days of the month
-      if (isToday)
+      if (isToday && validDay)
         cell.classList.add('today');
 
       // Add the day number to the cell
-      if (week === 0 && weekDay < firstDayOfWeek) {
+      if (week === 0 && !validDay) {
         cell.textContent = '';
       } else if (dayInMonth > daysInMonth) {
         break;
@@ -98,10 +116,10 @@ function generateCalendar() {
           cell.classList.add('continuous');
 
         // todo
-        cell.textContent = 
+        cell.textContent =
           dayInMonth <= daysInMonth && dayInMonth >= todayDate ?
-          dayInMonth : 
-          CONST_STREAKED_SYMBOL;
+            dayInMonth :
+            CONST__STREAKED_SYMBOL;
 
         dayPrev = dayInMonth;
 
@@ -117,5 +135,5 @@ function generateCalendar() {
   }
 
   // Append the table to the calendar container
-  calendarContainer.appendChild(table);
+  calendar.appendChild(table);
 }
