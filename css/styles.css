@@ -5,6 +5,9 @@
   --color-1st-rgb: 255, 0, 80;
   --color-1st-lighter-50: #FF4A75;
   --color-2nd: #00F2EA;
+  --color-dark-light-1: #999;
+  --color-dark-light-2: #aaa;
+  --font-size-small-1: 0.9rem;
   --day-width: 30px;
   --day-height: 30px;
   --day-padding: 5px;
@@ -21,26 +24,52 @@ html,
   align-items: center;
 }
 
-.calendar-table {
+/*#region Past months ------------------------------------------- START */
+#other_months {
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+}
+
+#other_months p {
+  /* Equal width */
+  flex: 1;
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 10px;
+  color: white;
+  font-size: var(--font-size-small-1);
+}
+
+#other_months p.past {
+  background-color: var(--color-2nd);
+}
+
+#other_months p.next {
+  background-color: var(--color-dark-light-2);
+}
+/*#endregion Past months ---------------------------------------- END */
+
+/*#region Calendar ---------------------------------------------- START */
+#calendar {
   margin-top: 20px;
   padding: 50px;
   border: solid 5px var(--color-1st);
   border-radius: 15px;
-  color: #999;
+  color: var(--color-dark-light-1);
 }
 
 .calendar-table th {
   text-transform: uppercase;
-  color: var(--color-2nd);
+  color: var(--color-1st);
   font-weight: bold;
-  text-decoration: underline;
   font-size: 1.0rem;
 }
 
 .calendar-table td {
   text-align: center;
   padding: var(--day-padding);
-  font-size: 0.9rem;
+  font-size: var(--font-size-small-1);
 }
 
 .calendar-table td {
@@ -75,3 +104,5 @@ html,
   background-color: var(--color-1st-lighter-50);
   border-radius: 5px;
 }
+
+/*#endregion Calendar ------------------------------------------- END */
