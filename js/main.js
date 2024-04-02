@@ -3,6 +3,12 @@
  * A week starts on Sunday and ends on Saturday
  */
 
+const CONST__MONTH_DISPLAYS = [ '', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC' ];
+const today = new Date();
+const todayDate = today.getDate();
+const todayMonth = today.getMonth() + 1;
+const todayYear = today.getFullYear();
+
 // todo: editable
 const CONST__STREAKED_SYMBOL = '✔'; // 🗣️✔🐉
 
@@ -21,7 +27,8 @@ const CONST_PAST_MONTHS = [
 // todo: this month w/ progress
 const el = document.createElement('p');
 el.classList.add('this');
-el.textContent = 1;
+el.style.setProperty('--progress-percent', `${todayDate / new Date(todayYear, todayMonth, 0).getDate() * 100}%`);
+el.textContent = CONST__MONTH_DISPLAYS[todayMonth];
 other_months.appendChild(el);
 
 // todo: next months
@@ -29,10 +36,10 @@ const CONST_NEXT_MONTHS = [
   { year: 2024, month: 5, display: 'MAY', days_in_month: 31 },
   { year: 2024, month: 6, display: 'JUN', days_in_month: 30 },
   { year: 2024, month: 7, display: 'JUL', days_in_month: 31 },
-].forEach(month => {
+].forEach( (month, index) => {
   const el = document.createElement('p');
   el.classList.add('next');
-  el.textContent = month.display;
+  el.textContent = CONST__MONTH_DISPLAYS[month.month];
 
   other_months.appendChild(el);
 });
@@ -51,11 +58,6 @@ btn.addEventListener('click', generateCalendar);
 window.onload = generateCalendar();
 
 function generateCalendar() {
-  const today = new Date();
-  const todayDate = today.getDate();
-  const todayMonth = today.getMonth() + 1;
-  const todayYear = today.getFullYear();
-
   // Get the year and month values from the inputs
   const year = parseInt(yearInput.value);
   const month = parseInt(monthInput.value);

@@ -39,6 +39,7 @@ html,
   border-radius: 10px;
   color: white;
   font-size: var(--font-size-small-1);
+  border: solid 2px transparent;
 }
 
 #other_months p.past {
@@ -46,7 +47,25 @@ html,
 }
 
 #other_months p.this {
+  z-index: 1;
+  position: relative;
+  border-color: var(--color-1st);
+  border-radius: 10px;
+  background-color: var(--color-dark-light-2);
+}
+/* Progress */
+#other_months p.this::before {
+  z-index: -1;
+  position: absolute;
+  left: 0px;
+  /* todo */
+  top: 2px;
+  /* Important */
+  content: ' ';
   background-color: var(--color-1st);
+  /* todo */
+  height: 88%;
+  width: var(--progress-percent);
 }
 
 #other_months p.next {
