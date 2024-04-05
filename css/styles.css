@@ -58,14 +58,13 @@ html,
   z-index: -1;
   position: absolute;
   left: 0px;
-  /* todo */
-  top: 2px;
+  top: 0px;
   /* Important */
   content: ' ';
   background-color: var(--color-1st);
-  /* todo */
-  height: 88%;
+  height: 100%;
   width: var(--progress-percent);
+  border-radius: 10px 0 0 10px;
 }
 
 #other_months p.next {
